@@ -1,0 +1,51 @@
+((= Nbconvert custom style for Jupyter Farsi =))
+((*- extends 'article.tplx' -*))
+
+((* block header *))
+  ((( super() )))
+  
+  \usepackage{xepersian}
+  \settextfont{XB Niloofar}
+  \linespread{1.3}
+  \usepackage{etoolbox}
+  
+  \BeforeBeginEnvironment{tcolorbox}{%
+    \begin{latin}
+  }
+  \AfterEndEnvironment{tcolorbox}{%
+    \end{latin}
+  }    
+  \BeforeBeginEnvironment{Verbatim}{%
+    \begin{latin}
+  }
+  \AfterEndEnvironment{Verbatim}{%
+    \end{latin}
+  }
+((* endblock header *))
+
+((* block title -*))
+  ((*- if "title" in nb.metadata *))
+    \title{((( nb.metadata.get("title", "") )))}
+  ((*- else *))
+    \title{((( resources.metadata.name | ascii_only | escape_latex )))}
+  ((*- endif -*))
+((*- endblock title *))
+
+((* block author -*))
+  ((*- if "author" in nb.metadata *))
+    \author{((( nb.metadata.get("author", "") )))}
+  ((*- endif -*))
+((*- endblock author *))
+
+((* block maketitle -*))
+{\let\newpage\relax\maketitle}
+((*- endblock maketitle *))
+
+((* block predoc -*))
+  ((*- if nb.metadata.get("benamekhoda", "0") == "1" *))
+\begin{center}
+به نام خدا
+\end{center}
+  ((*- endif -*))
+  ((( super() )))
+((*- endblock predoc *))
