@@ -21,6 +21,12 @@
   \AfterEndEnvironment{Verbatim}{%
     \end{latin}
   }
+  \BeforeBeginEnvironment{tabular}{%
+    \begin{latin}
+  }
+  \AfterEndEnvironment{tabular}{%
+    \end{latin}
+  }
 ((* endblock header *))
 
 ((* block title -*))
