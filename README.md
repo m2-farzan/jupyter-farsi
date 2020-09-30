@@ -1,3 +1,5 @@
+<div dir="ltr">
+
 # jupyter-farsi
 Workarounds to write/export Jupyter notebooks with Persian text in them
 
@@ -5,10 +7,32 @@ Workarounds to write/export Jupyter notebooks with Persian text in them
 
 ![alt text](https://raw.githubusercontent.com/m2-farzan/jupyter-farsi/master/images/preview.png)
 
+</div>
+<div dir="rtl">
+
 ## مقدمه
 بسیاری از ما از جوپتیر نوت بوک خوشمان می‌آید اما چون جوپیتر با متن فارسی راست به چپ فارسی خوب کار نمی‌کند، نمی‌توانیم از آن استفاده کنیم.
 من تصمیم داشتم برای پروژه‌های درسی‌ام از جوپیتر استفاده کنم و موفق شدم راهکارهایی برای سازگار کردن آن با متن فارسی پیدا کنم.
 در این ریپو من این راهکارها را به اشتراک گذاشته‌ام و آپدیت می‌کنم اما امیدوارم به طور همزمان بتوانیم به کمک یکدیگر تغییرات لازم را در کد بالادست جوپیتر اعمال کنیم تا دیگر نیازی به این ریپو نباشد.
+***
+<div style="border-color: red;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 1rem;"
+    dir="rtl">
+<p>
+به روز رسانی:
+جوپیتر نوت‌بوک اکنون از متن راست-به-چپ پشتیبانی میکند! کافیست نسخه 6.1 به بالا را نصب کنید. اطلاعات بیشتر در 
+<a href="https://github.com/jupyter/notebook/pull/5052#issuecomment-647725947"/>این لینک</a>
+</p>
+<p>
+در آینده نزدیک قصد داریم این پشتیبانی را به جوپیتر-لب و جوپیتر-وب هم اضافه کنیم. منتظر باشید!
+</p>
+</div>
+
+***
 
 مشکلات جوپیتر با متن فارسی دو دسته است:
 
@@ -25,6 +49,9 @@ Workarounds to write/export Jupyter notebooks with Persian text in them
 در ادامه نحوه پیاده سازی این راه حل ها آمده است.
 
 ## پیش‌نیازها
+
+</div>
+<div dir="ltr">
 
 ### Required packages:
 
@@ -47,14 +74,23 @@ or
  
 If any of above fails, you must solve the error before going on.
 
+</div>
+<div dir="rtl">
+
 ## رفع مشکل به هم ریختگی متن نمایش داده شده در اینترفیس وب
 برای این کار باید یک کد جاواسکریپت را به عنوان اکستنشن به جوپیتر اضافه کنیم.
 برای این کار محتویات این ریپو را در یک محل موقتی دانلود کرده و درون ریپو یک ترمینال باز کنید و دستورات زیر را بزنید:
+
+</div>
+<div dir="ltr">
 
 ```
 sudo jupyter nbextension install webview-rtl-fix
 jupyter nbextension enable webview-rtl-fix/main
 ```
+
+</div>
+<div dir="rtl">
 
 حال جوپیتر را ببندید و مجدد باز کنید. باید مشکل حل شده باشد.
 
@@ -62,42 +98,63 @@ jupyter nbextension enable webview-rtl-fix/main
 
 برای گرفتن خروجی لاتکس، باید قالب را نصب کنید. ابتدا با استفاده از دستور زیر بفهمید که محل نصب قالب‌های جوپیتر-لاتکس کجاست:
 
+</div>
+<div dir="ltr">
+
 `locate base.tplx`
+
+</div>
+<div dir="rtl">
 
 برای من در چنین محلی است:
 
+</div>
+<div dir="ltr">
+
 `/usr/lib/python3.7/site-packages/nbconvert/templates/latex/base.tplx`
+
+</div>
+<div dir="rtl">
 
 بنابراین فایل قالب را به این محل کپی می‌کنیم:
 
+</div>
+<div dir="ltr">
+
 `sudo cp latex-farsi.tplx /usr/lib/python3.7/site-packages/nbconvert/templates/latex/`
+
+</div>
+<div dir="rtl">
 
 حال قالب مورد نظر ما اضافه شده است.
 از این پس، کافیست هنگام خروجی گرفتن از نوت بوک مورد نظر، قالب خود را بر گزینیم. متاسفانه این کار با استفاده از منوها ممکن نیست بنابراین باید دستوراتی مانند آنچه در ادامه می‌آید استفاده شوند:
 
+</div>
+<div dir="ltr">
+
 `alias xetex='xelatex'; jupyter nbconvert --to=pdf --template=latex-farsi NOTEBOOK_FILE_NAME.ipynb; unalias xetex`
 
-این آخری خیلی طولانی شد. برای اینکه هر دفعه نخواهیم این دستور را تایپ کنیم، فایل
+</div>
+<div dir="rtl">
 
-makefile
+این آخری خیلی طولانی شد. برای اینکه هر دفعه نخواهیم این دستور را تایپ کنیم، فایل makefile موجود در ریپو را در کنار دفتر کپی می‌کنیم تا با زدن دستور make دفتر به پی دی اف تبدیل شود.
 
-موجود در ریپو را در کنار دفتر کپی می‌کنیم تا با زدن دستور 
-
-make
-
-دفتر به پی دی اف تبدیل شود.
-
-فراموش نکنید که اسم دفتر را در 
-
-makefile
-
-تغییر دهید.
+فراموش نکنید که اسم دفتر را در makefile تغییر دهید.
 
 همچنین، برای ثبت عنوان، نام نویسنده و به نام خدا، در جوپیتر وارد مسیر زیر شوید:
 
+</div>
+<div dir="ltr">
+
 Edit -> Edit Notebook Metadata
 
+</div>
+<div dir="rtl">
+
 و در آنجا از چیزی مانند آنچه در زیر آمده است استفاده کنید:
+
+</div>
+<div dir="ltr">
 
 ```
 {
@@ -106,3 +163,5 @@ Edit -> Edit Notebook Metadata
   "title": "تمرین شماره (۲) CFD"
   }
 ```
+
+</div>
