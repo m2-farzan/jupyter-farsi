@@ -1,6 +1,6 @@
 <div dir="ltr">
 
-# jupyter-farsi
+# jupyter-farsi (Instructions for nbconvert > 6.0)
 Workarounds to write/export Jupyter notebooks with Persian text in them
 
 ## WHAT YOU'LL GET:
@@ -96,32 +96,11 @@ jupyter nbextension enable webview-rtl-fix/main
 
 ## رفع مشکل خروجی لاتکس
 
-برای گرفتن خروجی لاتکس، باید قالب را نصب کنید. ابتدا با استفاده از دستور زیر بفهمید که محل نصب قالب‌های جوپیتر-لاتکس کجاست:
+برای گرفتن خروجی لاتکس، باید قالب را نصب کنید. از دستور زیر استفاده کنید:
 
-</div>
 <div dir="ltr">
 
-`locate base.tplx`
-
-</div>
-<div dir="rtl">
-
-برای من در چنین محلی است:
-
-</div>
-<div dir="ltr">
-
-`/usr/lib/python3.7/site-packages/nbconvert/templates/latex/base.tplx`
-
-</div>
-<div dir="rtl">
-
-بنابراین فایل قالب را به این محل کپی می‌کنیم:
-
-</div>
-<div dir="ltr">
-
-`sudo cp latex-farsi.tplx /usr/lib/python3.7/site-packages/nbconvert/templates/latex/`
+`cp -r latex-farsi/ ~/.local/share/jupyter/nbconvert/templates/`
 
 </div>
 <div dir="rtl">
@@ -132,7 +111,7 @@ jupyter nbextension enable webview-rtl-fix/main
 </div>
 <div dir="ltr">
 
-`alias xetex='xelatex'; jupyter nbconvert --to=pdf --template=latex-farsi NOTEBOOK_FILE_NAME.ipynb; unalias xetex`
+`alias xetex='xelatex'; jupyter nbconvert --to=pdf --template-file=~/.local/share/jupyter/nbconvert/templates/latex-farsi/index.tex.j2 NOTEBOOK_FILE_NAME.ipynb; unalias xetex`
 
 </div>
 <div dir="rtl">
