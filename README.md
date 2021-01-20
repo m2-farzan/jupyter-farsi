@@ -23,7 +23,13 @@ Workarounds to write/export Jupyter notebooks with Persian text in them
     font-size: 1rem;"
     dir="rtl">
 <p>
-به روز رسانی:
+
+## اخبار (۲)
+ماژول nbconvert که وظیفهٔ خروجی گرفتن از نوت‌بوک را بر عهده دارد، در نسخهٔ جدید (ورژن nbconvert 6.0) تغییرات اساسی داشته است. با دستور `jupyter --version` می‌توانید نسخهٔ این ماژول را چک کنید. اگر نسخهٔ شما 6 و بالاتر است، دستورالعمل‌های
+<a href="https://github.com/m2-farzan/jupyter-farsi/tree/nbconvert-6.0+"/>این شاخه</a>
+را دنبال کنید.
+
+## اخبار (۱)
 جوپیتر نوت‌بوک اکنون از متن راست-به-چپ پشتیبانی میکند! کافیست نسخه 6.1 به بالا را نصب کنید. اطلاعات بیشتر در 
 <a href="https://github.com/jupyter/notebook/pull/5052#issuecomment-647725947"/>این لینک</a>
 </p>
